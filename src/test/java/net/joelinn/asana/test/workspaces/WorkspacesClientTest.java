@@ -1,9 +1,12 @@
 package net.joelinn.asana.test.workspaces;
 
 import net.joelinn.asana.test.BaseTest;
+import net.joelinn.asana.workspaces.Workspace;
 import net.joelinn.asana.workspaces.Workspaces;
 import net.joelinn.asana.workspaces.WorkspacesClient;
+
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -25,17 +28,29 @@ public class WorkspacesClientTest extends BaseTest{
             return;
         }
         Workspaces workspaces = client.getWorkspaces();
-        System.out.println(workspaces.get(0).name);
-        System.out.println(workspaces.get(0).id);
+        for(Workspace ws: workspaces) {
+            System.out.println(ws.name + ": isOrg:" + ws.isOrganization +" : "  + ws.id);
+        }
     }
 
+    /**
+     * Seems cannot rename a workspace that is an organization (makes sense) nor a personal workspace.
+     * Maybe paid-for orgs can have mutiple ws which can be renamed
+     */
+    @Ignore("Renaming workspaces seems problimatic.")
     @Test
     public void testUpdateWorkspace(){
         if(getApiKey().equals("")){
             // skip the test if no api key has been provided
             return;
         }
-        long workspaceId = 498346170860L;   //replace this with your own workspace id
-        client.updateWorkspace(workspaceId, "Personal Projects!");
+        for(Workspace ws: client.getWorkspaces()) {
+        	if (ws.id == getAsanaWorkspaceId()) {
+        		String oldName = ws.name;
+                client.updateWorkspace(getAsanaWorkspaceId(), "testcase renamed");
+                client.updateWorkspace(getAsanaWorkspaceId(), oldName);        		
+        	}
+        }
     }
+    
 }

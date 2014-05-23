@@ -32,6 +32,11 @@ public class ProjectRequestBuilder {
         return this;
     }
 
+    /**
+     * Use only for workspaces that are organizations
+     * @param teamId
+     * @return
+     */
     public ProjectRequestBuilder team(long teamId){
         params.add("team", teamId);
         return this;

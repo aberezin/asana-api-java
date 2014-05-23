@@ -27,7 +27,8 @@ public class TagsClientTest extends BaseTest{
             // skip the test if no api key has been provided
             return;
         }
-        Tag tag = client.createTag(new TagsRequestBuilder(4440299545542L, "test tag").color(Colors.DARK_BLUE));
+        //create tags in the organization workspace since not allowed in personal ws
+        Tag tag = client.createTag(new TagsRequestBuilder(getAsanaOrganizationId(), "test tag").color(Colors.DARK_BLUE));
 
         Tag retrievedTag = client.getTag(tag.id);
 

@@ -1,8 +1,13 @@
 *.iml
 /.idea
+/.settings
+/.classpath
+/.project
 
 # build files
 /data
 /target
 pom.xml.releaseBackup
 release.properties
+asanaTestApiKey.properties
+

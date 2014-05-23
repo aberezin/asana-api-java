@@ -28,8 +28,9 @@ public class ProjectsClientTest extends BaseTest{
             // skip the test if no api key has been provided
             return;
         }
-        Project project = client.createProject(new ProjectRequestBuilder(4440299545542L, "test project")
-                .team(4440299545545L).notes("this is a test").color("dark-blue"));
+        //we will use an the organization workspace because it requires a team and we want to test that too
+        Project project = client.createProject(new ProjectRequestBuilder(getAsanaOrganizationId(), "test project")
+                .team(getAsanaTeamId()).notes("this is a test").color("dark-blue"));
 
         Project retrievedProject = client.getProject(project.id);
 

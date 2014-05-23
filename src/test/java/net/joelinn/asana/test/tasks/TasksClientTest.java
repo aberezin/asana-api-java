@@ -1,6 +1,7 @@
 package net.joelinn.asana.test.tasks;
 
 import com.sun.jersey.api.client.ClientResponse;
+
 import junit.framework.TestCase;
 import net.joelinn.asana.ApiException;
 import net.joelinn.asana.tags.Tags;
@@ -8,7 +9,9 @@ import net.joelinn.asana.tasks.Task;
 import net.joelinn.asana.tasks.TaskRequestBuilder;
 import net.joelinn.asana.tasks.TasksClient;
 import net.joelinn.asana.test.BaseTest;
+
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -23,13 +26,14 @@ public class TasksClientTest extends BaseTest{
         client = new TasksClient(getApiKey());
     }
 
+    @Ignore("hardwired ids not valid")
     @Test
     public void testTasks(){
         if(getApiKey().equals("")){
             // skip the test if no api key has been provided
             return;
         }
-        Task newTask = client.createTask(new TaskRequestBuilder(4440299545542L, "Test task!").addFollower(4858211767376L)
+        Task newTask = client.createTask(new TaskRequestBuilder(getAsanaWorkspaceId(), "Test task!").addFollower(4858211767376L)
             .addFollower(4440682739786L).notes("Here be notes.").assignee(4440682739795L).addProject(4440682259461L)
             .assigneeStatus(TaskRequestBuilder.ASSIGNEE_STATUS_LATER).dueOn(2020, 1, 1));
 

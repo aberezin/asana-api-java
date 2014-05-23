@@ -14,10 +14,20 @@ public class TagsRequestBuilder extends AbstractRequestBuilder{
 
     }
 
+    /**
+     * workspace must not be personal-workspace.
+     * @param workspaceId
+     * @param name
+     */
     public TagsRequestBuilder(long workspaceId, String name){
         workspace(workspaceId).name(name);
     }
 
+    /**
+     * workspace must not be personal-workspace.
+     * @param workspaceId
+     * @return
+     */
     public TagsRequestBuilder workspace(long workspaceId){
         return (TagsRequestBuilder) setParam("workspace", workspaceId);
     }

@@ -25,7 +25,7 @@ public class TeamsClientTest extends BaseTest{
             // skip the test if no api key has been provided
             return;
         }
-        Teams teams = client.getTeams(4440299545542L);
+        Teams teams = client.getTeams(getAsanaOrganizationId());
 
         for(Team team : teams){
             System.out.println(String.format("%s: %s", team.name, team.id));

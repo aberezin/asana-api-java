@@ -2,6 +2,8 @@ package net.joelinn.asana.tags;
 
 import net.joelinn.asana.users.Users;
 import net.joelinn.asana.workspaces.Workspace;
+
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.annotate.JsonRootName;
 
@@ -9,6 +11,7 @@ import org.codehaus.jackson.map.annotate.JsonRootName;
  * Joe Linn
  * 11/17/13
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonRootName("data")
 public class Tag {
     public long id;

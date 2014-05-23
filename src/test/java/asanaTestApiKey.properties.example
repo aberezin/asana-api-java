@@ -1,0 +1,9 @@
+#You will need an asanaTestApiKey.properties file that follows this example.
+#Do not commit your file for security reasons.
+#An api key for a user in Asana. This user will have various items like tasks, workspaces, etc CRUD'd
+
+#return empty string to make all tests skip 
+#AsanaApiKey=
+
+#AsanaApiKey=PutKeyHere
+
